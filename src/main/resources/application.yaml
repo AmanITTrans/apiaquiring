@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: apiAcquiring
+
+  main:
+    allow-bean-definition-overriding: true
+
+server:
+  port: 8020
+
+debug: false
+
+whatsapp:
+  url: ${WHATSAPP_URL:https://api.ycloud.com/v2/whatsapp/messages/sendDirectly}
+  key: ${WHATSAPP_KEY:07752204f7f80a83dadb6c5e1ad2a5e2}
+  from: ${WHATSAPP_FROM:77472063919}
+  template: ${WHATSAPP_TEMPLATE:amanru}
+  apiUrl: ${WHATSAPP_API_URL:https://7700.api.greenapi.com}
+  idInstances: ${WHATSAPP_ID_INSTANCE:7700423275}
+  apiTokenInstances: ${WHATSAPP_TOKEN_INSTANCE:2a41415433d2421da068b21391ef4d00ffc6e62f0cc84cc3b3}
+
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    org.springframework.web: INFO
+
+  aspect:
+    slow-threshold-ms: 2000
+    log-args: true
+    log-result: false
+    max-string-len: 500
+
+unicorn:
+  # === Базовые настройки (PROD) ===
+  url: ${UNICORN_URL:https://payment.unicornlab.kz/external/extended-cert}
+  point: ${UNICORN_POINT:4504}          # ID терминала (point)
+  service: ${UNICORN_SERVICE:1330}      # 1330 — одностадийный платеж (auth+capture)
+  currency: 398                         # KZT
+  email: "almasn@rakhmet.com"
+
+  # === mTLS (клиентский сертификат) ===
+  keystore:
+    path: ${UNICORN_KEYSTORE_PATH:C:/Users/User/Downloads/point_4504.p12}
+    password: ${UNICORN_KEYSTORE_PASSWORD:4FEL6dnxeD}
+    type: PKCS12
+
+  # === URL-адреса ===
+  notify-url: ${UNICORN_NOTIFY_URL:${public.base-url}/api/bcc/callback}
+  redirect-url: ${UNICORN_REDIRECT_URL:${public.base-url}/api/bcc/what-is-it}
+
+  http:
+    connect-timeout-ms: ${UNICORN_CONNECT_TIMEOUT_MS:5000}
+    read-timeout-ms: ${UNICORN_READ_TIMEOUT_MS:10000}
+    max-in-memory-size-bytes: ${UNICORN_MAX_IN_MEMORY:1048576}

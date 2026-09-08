@@ -1,0 +1,13 @@
+package acquiring.db.enums;
+
+public enum PaymentEventKind {
+    CREATE_REQUEST,
+    CREATE_RESPONSE,
+    CALLBACK_RECEIVED,
+    RETURN_RECEIVED,
+    STATUS_APPLIED,
+    REFUND_REQUEST,
+    REFUND_RESULT,
+    ERROR_EXTERNAL,
+    ERROR_INTERNAL
+}
