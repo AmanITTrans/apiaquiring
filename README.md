@@ -1,6 +1,11 @@
 # First pull project
 `git clone https://github.com/AmanITTrans/apiaquiring.git`
 
+# Configure java
+`set jdk 21`
+
+# Configure gradle latest gradle
+
 # Create a Payment - `POST`
 
 Payments are made using the `<payment>` async payment operation.
