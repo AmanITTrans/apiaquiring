@@ -1,3 +1,5 @@
+# First pull project
+`git clone https://github.com/AmanITTrans/apiaquiring.git`
 
 # Create a Payment - `POST`
 
